@@ -16,9 +16,13 @@ public sealed class ListTagBuilder<TTag> where TTag : class, ITag
         return new ListTagBuilder<TTag>([], name);
     }
 
-    public ListTagBuilder<TTag> Add(TTag tag)
+    public ListTagBuilder<TTag> Add(TTag? tag)
     {
-        tags.Add(tag);
+        if (tag is not null)
+        {
+            tags.Add(tag);
+        }
+
         return this;
     }
 

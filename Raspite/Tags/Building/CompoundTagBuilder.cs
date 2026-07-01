@@ -20,8 +20,13 @@ public sealed class CompoundTagBuilder
         return new CompoundTagBuilder([], name);
     }
 
-    public CompoundTagBuilder Add(ITag tag, bool overwriteExisting = false)
+    public CompoundTagBuilder Add(ITag? tag, bool overwriteExisting = false)
     {
+        if (tag is null)
+        {
+            return this;
+        }
+
         if (overwriteExisting)
         {
             tags[tag.Name] = tag;
